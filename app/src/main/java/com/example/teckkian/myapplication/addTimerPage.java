@@ -11,3 +11,4 @@ public class addTimerPage extends AppCompatActivity {
         setContentView(R.layout.activity_add_timer_page);
     }
 }
+hahahahahahhahahahahahahah
