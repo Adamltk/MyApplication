@@ -3,11 +3,11 @@ package com.example.teckkian.myapplication;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class addTimerPage extends AppCompatActivity {
+public class forgotPassword extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_timer_page);
+        setContentView(R.layout.activity_forgot_password);
     }
 }
