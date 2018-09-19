@@ -7,32 +7,6 @@
     tools:context=".login"
     tools:layout_editor_absoluteY="25dp">
 
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="264dp"
-        android:layout_marginLeft="27dp"
-        android:layout_marginStart="27dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Email"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Password"
-        app:layout_constraintBottom_toTopOf="@+id/forgotPassword"
-        app:layout_constraintStart_toStartOf="@+id/email"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
-
     <Button
         android:id="@+id/login"
         android:layout_width="wrap_content"
@@ -40,17 +14,17 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
+        android:onClick="OnLogin"
         android:text="LOGIN"
         app:layout_constraintBottom_toTopOf="@+id/signUpText"
         app:layout_constraintStart_toStartOf="@+id/forgotPassword"
-        app:layout_constraintTop_toBottomOf="@+id/forgotPassword"
-        android:onClick="OnLogin"/>
+        app:layout_constraintTop_toBottomOf="@+id/forgotPassword" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="0dp"
-        android:layout_height="178dp"
-        android:layout_marginBottom="42dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="12dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="42dp"
@@ -64,12 +38,10 @@
         android:id="@+id/imageView2"
         android:layout_width="134dp"
         android:layout_height="106dp"
-        android:layout_marginBottom="37dp"
         android:layout_marginLeft="43dp"
         android:layout_marginStart="43dp"
         android:layout_marginTop="84dp"
         android:src="@drawable/ic_dog_food"
-        app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -78,11 +50,11 @@
         android:id="@+id/forgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="196dp"
         android:text="forgot password"
         android:textColor="@color/colorPrimaryDark"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/login"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/password"
         app:layout_constraintStart_toStartOf="@+id/password"
         app:layout_constraintTop_toBottomOf="@+id/password" />
@@ -94,6 +66,7 @@
         android:layout_marginBottom="78dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:onClick="OpenReg"
         android:text="Sign Up"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
@@ -101,5 +74,30 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/login"
         app:layout_constraintTop_toBottomOf="@+id/login" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:ems="10"
+        android:hint="Email:"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="13dp"
+        android:ems="10"
+        android:hint="Password:"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/forgotPassword"
+        app:layout_constraintStart_toStartOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
 </android.support.constraint.ConstraintLayout>
