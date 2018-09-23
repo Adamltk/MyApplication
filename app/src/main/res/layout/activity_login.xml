@@ -11,25 +11,25 @@
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginBottom="152dp"
+        android:layout_marginLeft="53dp"
+        android:layout_marginStart="53dp"
         android:onClick="OnLogin"
         android:text="LOGIN"
-        app:layout_constraintBottom_toTopOf="@+id/signUpText"
-        app:layout_constraintStart_toStartOf="@+id/forgotPassword"
-        app:layout_constraintTop_toBottomOf="@+id/forgotPassword" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/password"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="72dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="42dp"
         android:src="@drawable/ic_dog"
-        app:layout_constraintBottom_toTopOf="@+id/email"
+        app:layout_constraintBottom_toTopOf="@+id/password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="parent" />
@@ -47,33 +47,20 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/forgotPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="196dp"
-        android:text="forgot password"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/password"
-        app:layout_constraintStart_toStartOf="@+id/password"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
-
-    <TextView
         android:id="@+id/signUpText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="64dp"
+        android:layout_height="25dp"
         android:layout_marginBottom="78dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
         android:onClick="OpenReg"
         android:text="Sign Up"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@android:color/black"
         android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/login"
-        app:layout_constraintTop_toBottomOf="@+id/login" />
+        app:layout_constraintTop_toBottomOf="@+id/login"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/email"
@@ -92,12 +79,12 @@
         android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="13dp"
+        android:layout_marginBottom="26dp"
         android:ems="10"
         android:hint="Password:"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/forgotPassword"
+        app:layout_constraintBottom_toTopOf="@+id/login"
         app:layout_constraintStart_toStartOf="@+id/email"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 </android.support.constraint.ConstraintLayout>

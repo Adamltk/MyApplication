@@ -25,6 +25,15 @@ public class homePage extends AppCompatActivity {
 
 
 
+        Button logout = (Button)findViewById(R.id.logoutBtn);
+        logout.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent logout = new Intent(getApplicationContext(), login.class);
+                startActivity(logout);
+            }
+        });
+
 
     }
 }
