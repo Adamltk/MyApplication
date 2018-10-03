@@ -6,4 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".feedingRecPage">
 
+    <ListView
+        android:id="@+id/listVew"
+        android:layout_width="384dp"
+        android:layout_height="569dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-1dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="263dp"
+        tools:layout_editor_absoluteY="303dp" />
+
 </android.support.constraint.ConstraintLayout>

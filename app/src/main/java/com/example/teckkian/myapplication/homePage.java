@@ -31,9 +31,26 @@ public class homePage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent logout = new Intent(getApplicationContext(), login.class);
                 startActivity(logout);
+
             }
         });
 
 
+        Button feedPetRec = findViewById(R.id.viewRecBtn);
+        feedPetRec.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent feedRec = new Intent(getApplicationContext(), feedingRecPage.class);
+                startActivity(feedRec);
+
+            }
+        });
+
+        }
+
+
+
+
+
     }
-}
+
