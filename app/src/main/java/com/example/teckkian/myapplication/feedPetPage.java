@@ -13,7 +13,7 @@ public class feedPetPage extends AppCompatActivity {
     Calendar calendar;
     SimpleDateFormat dateFormat;
     String Date;
-    Button feedInBtn;
+    Button addTimer1Btn, feedBtn;
 
 
 
@@ -23,23 +23,35 @@ public class feedPetPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed_pet_page);
 
-        feedInBtn = (Button)findViewById(R.id.feedInstBtn);
+
+
 
         calendar = Calendar.getInstance();
         dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         Date = dateFormat.format(calendar.getTime());
 
 
+        addTimer1Btn = findViewById(R.id.addTimerBtn);
+        addTimer1Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent logout = new Intent(getApplicationContext(), addTimerPage.class);
+                startActivity(logout);
+
+            }
+        });
+
+
+
+
+
          }
 
-    public void feedInst(View view) {
+    public void feedPPet(View view) {
+        Intent feedPetInst = new Intent(getApplicationContext(), feedPetIns.class);
+        startActivity(feedPetInst);
 
-        String date = dateFormat.format(calendar.getTime());
-        String type = "feedInst";
-        BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-        backgroundWorker.execute(type, date);
     }
-
 
          }
 

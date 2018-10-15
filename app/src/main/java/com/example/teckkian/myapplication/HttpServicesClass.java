@@ -22,9 +22,6 @@ import java.io.InputStreamReader;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-/**
- * Created by Juned on 12/25/2016.
- */
 
 public class HttpServicesClass {
 

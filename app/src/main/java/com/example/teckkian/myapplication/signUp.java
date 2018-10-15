@@ -11,10 +11,10 @@ public class signUp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up2);
-        name1 = (EditText)findViewById(R.id.name);
-        user_name1 = (EditText)findViewById(R.id.user_name);
-        password1 = (EditText)findViewById(R.id.password);
+        setContentView(R.layout.activity_sign_up);
+        name1 = (EditText)findViewById(R.id.email2);
+        user_name1 = (EditText)findViewById(R.id.name2);
+        password1 = (EditText)findViewById(R.id.password2);
 
     }
 

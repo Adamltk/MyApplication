@@ -36,6 +36,15 @@ public class homePage extends AppCompatActivity {
         });
 
 
+        Button notification = findViewById(R.id.viewNotBtn);
+        notification.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent viewNot = new Intent(getApplicationContext(), notificationPage.class);
+                startActivity(viewNot);
+            }
+        });
+
         Button feedPetRec = findViewById(R.id.viewRecBtn);
         feedPetRec.setOnClickListener(new OnClickListener() {
             @Override
