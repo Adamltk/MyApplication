@@ -5,37 +5,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/ipAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginBottom="36dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="192.168.1.28:21567"
-        app:layout_constraintBottom_toTopOf="@+id/btnUp"
-        app:layout_constraintStart_toStartOf="@+id/btnUp" />
-
     <Button
         android:id="@+id/btnUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="168dp"
-        android:text="Up"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="112dp"
+        android:onClick="feedInst"
+        android:text="Small"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="feedInst"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="42dp"
-        android:text="Down"
+        android:layout_marginTop="36dp"
+        android:onClick="feedInst"
+        android:text="Medium"
         app:layout_constraintStart_toStartOf="@+id/btnUp"
-        app:layout_constraintTop_toBottomOf="@+id/btnUp"
-        android:onClick="feedInst"/>
+        app:layout_constraintTop_toBottomOf="@+id/btnUp" />
+
+    <Button
+        android:id="@+id/large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="large"
+        app:layout_constraintStart_toStartOf="@+id/btnDown"
+        app:layout_constraintTop_toBottomOf="@+id/btnDown" />
 </android.support.constraint.ConstraintLayout>

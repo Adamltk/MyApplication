@@ -16,15 +16,29 @@
         <TimePicker
             android:id="@+id/timePicker"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="351dp" />
 
 
         <Button
             android:id="@+id/buttonAlarm"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Set Alarm" />
+            android:layout_height="match_parent"
+            android:text="Set Timer" />
+
+        <Button
+            android:id="@+id/buttonCancel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Cancel  Timer" />
 
     </LinearLayout>
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp" />
 
 </RelativeLayout>
