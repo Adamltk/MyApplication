@@ -35,8 +35,8 @@ public class feedPetPage extends AppCompatActivity {
         addTimer1Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent logout = new Intent(getApplicationContext(), addTimerPage.class);
-                startActivity(logout);
+                Intent addtimer = new Intent(getApplicationContext(), addTimerPage.class);
+                startActivity(addtimer);
 
             }
         });

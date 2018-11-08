@@ -9,10 +9,13 @@ import android.widget.Button;
 
 public class homePage extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+
+
 
         Button feedPetBtn = (Button)findViewById(R.id.feedPet);
         feedPetBtn.setOnClickListener(new OnClickListener() {

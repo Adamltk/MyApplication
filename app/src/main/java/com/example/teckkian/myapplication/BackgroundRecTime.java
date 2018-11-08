@@ -30,7 +30,7 @@ public class BackgroundRecTime extends AsyncTask<String,Void,String> {
     protected String doInBackground(String... params) {
         String type = params[0];
 
-        String feedInst_url = "http://192.168.1.41/feedInst.php";
+        String feedInst_url = "http://192.168.0.107/feedInst.php";
         if (type.equals("feedInst")) {
             try {
                 String date = params[1];
@@ -45,7 +45,7 @@ public class BackgroundRecTime extends AsyncTask<String,Void,String> {
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
                 String post_data = URLEncoder.encode("date", "UTF-8") + "=" + URLEncoder.encode(date, "UTF-8") + "&"
-                        +URLEncoder.encode("time", "UTF-8") + "=" + URLEncoder.encode(time1, "UTF-8");
+                        +URLEncoder.encode("time", "UTF-8") + "=" + URLEncoder.encode(time1 , "UTF-8");
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
                 bufferedWriter.close();

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
-
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.InetAddress;
@@ -26,22 +25,28 @@ public class MyAlarm extends BroadcastReceiver {
 
     public static String wifiModuleIp = "";
     public static int wifiModulePort = 0;
-    public static String CMD = "0";
-
+     String CMD;
 
 
     //the method will be fired when the alarm is triggerred
     @Override
     public void onReceive(Context context, Intent intent) {
 
+        String action = intent.getAction();
+
+
+
+
         //you can check the log that it is fired
         //Here we are actually not doing anything
         //but you can do any task here that you want to be done at a specific time everyday
         Log.d("MyAlarmBelal", "Alarm just fired");
 
+        if(action.equals("my.action.string.RUN")) {
+            CMD = intent.getExtras().getString("CMD");
 
+        }
         getIPandPort();
-        CMD = "Up";
         Socket_AsyncTask cmd_increase_servo = new Socket_AsyncTask();
         cmd_increase_servo.execute();
 

@@ -8,6 +8,7 @@ import android.widget.EditText;
 public class signUp extends AppCompatActivity {
 
     EditText name1,user_name1,password1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -15,6 +16,9 @@ public class signUp extends AppCompatActivity {
         name1 = (EditText)findViewById(R.id.email2);
         user_name1 = (EditText)findViewById(R.id.name2);
         password1 = (EditText)findViewById(R.id.password2);
+
+
+
 
     }
 
