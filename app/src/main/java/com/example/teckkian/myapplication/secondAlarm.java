@@ -16,7 +16,7 @@ import java.util.Calendar;
 
 
 //class extending the Broadcast Receiver
-public class MyAlarm extends BroadcastReceiver {
+public class secondAlarm extends BroadcastReceiver {
 
     Calendar calendar;
     SimpleDateFormat dateFormat;
@@ -42,14 +42,14 @@ public class MyAlarm extends BroadcastReceiver {
         //but you can do any task here that you want to be done at a specific time everyday
         Log.d("MyAlarmBelal", "Alarm just fired");
 
-      /**  if(action.equals("my.action.string.RUN")) {
-            CMD = intent.getExtras().getString("CMD");
+        /**  if(action.equals("my.action.string.RUN")) {
+         CMD = intent.getExtras().getString("CMD");
 
-        }**/
+         }**/
 
 
-        CMD = i.getStringExtra("CMD");
-
+        // CMD = i.getStringExtra("CMD");
+        CMD = "Down";
         Log.d("TESTING", CMD);
 
         getIPandPort();

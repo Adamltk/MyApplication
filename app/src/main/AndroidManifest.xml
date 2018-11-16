@@ -28,38 +28,40 @@
         </activity>
 
         <activity android:name=".homePage"/>
-        <activity android:name=".feedPetPage"/>
 
 
+        <activity android:name=".addTimerPage"/>
 
-        <activity android:name=".addTimerPage">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <!-- registering the receiver -->
         <receiver
             android:name=".MyAlarm"
             android:enabled="true"
             android:exported="true">
 
-            <intent-filter>
-                <action android:name="my.action.string.RUN"/>
 
-            </intent-filter>
         </receiver>
 
 
 
 
-        <activity android:name=".timerListPage"/>
+        <activity android:name=".SecondTimer"/>
+
+        <receiver
+            android:name=".secondAlarm"
+            android:enabled="true"
+            android:exported="true">
+        </receiver>
+
+
         <activity android:name=".feedingRecPage"/>
         <activity android:name=".notificationPage"/>
         <activity android:name=".signUp"/>
         <activity android:name=".feedPetIns"/>
 
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
 
     </application>

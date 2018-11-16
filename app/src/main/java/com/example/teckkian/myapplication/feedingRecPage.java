@@ -23,7 +23,7 @@ public class feedingRecPage extends AppCompatActivity {
     public void readRecords(View view){
 
         WebView webview = (WebView) findViewById(R.id.webview);
-        webview.loadUrl("http://192.168.0.107/new 1.php");
+        webview.loadUrl("http://192.168.1.41/new 1.php");
        /*Cursor r= db.getData(1);
         TextView display=(TextView)findViewById(R.id.showData);
         String show= r.getString(r.getColumnIndex(DatabaseHandler.TEMP_READINGS_VALUE));

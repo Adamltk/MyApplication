@@ -14,13 +14,13 @@
         android:orientation="vertical">
 
         <TimePicker
-            android:id="@+id/timePicker"
+            android:id="@+id/timePicker1"
             android:layout_width="wrap_content"
             android:layout_height="351dp" />
 
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/spinner1"
             android:layout_width="143dp"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/switch1"
@@ -29,13 +29,13 @@
             android:layout_marginTop="2dp" />
 
         <Button
-            android:id="@+id/buttonAlarm"
+            android:id="@+id/buttonAlarm1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Set Timer" />
 
         <Button
-            android:id="@+id/buttonCancel"
+            android:id="@+id/buttonCancel1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Cancel  Timer" />

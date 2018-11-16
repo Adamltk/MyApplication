@@ -16,7 +16,7 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class addTimerPage extends AppCompatActivity {
+public class SecondTimer extends AppCompatActivity {
 
     //the timepicker object
     TimePicker timePicker;
@@ -31,15 +31,15 @@ public class addTimerPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_timer_page);
+        setContentView(R.layout.second_timer);
 
         //getting the timepicker object
-        timePicker =  findViewById(R.id.timePicker);
-        mySpinner =  findViewById(R.id.spinner);
+        timePicker =  findViewById(R.id.timePicker1);
+        mySpinner =  findViewById(R.id.spinner1);
 
 
-       // ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(addTimerPage.this,
-         //       android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.amount));
+        // ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(addTimerPage.this,
+        //       android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.amount));
 
         ArrayAdapter<CharSequence> myAdapter = ArrayAdapter.createFromResource(this, R.array.amount, android.R.layout.simple_spinner_item);
 
@@ -52,41 +52,41 @@ public class addTimerPage extends AppCompatActivity {
 
 
 /**
-        mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if (i == 1) {
-                    CMD = "Up";
-                    Intent intent1 = new Intent(addTimerPage.this, MyAlarm.class);
-                    intent1.putExtra("CMD", CMD);
-                    startActivity(intent1);
+ mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+@Override
+public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+if (i == 1) {
+CMD = "Up";
+Intent intent1 = new Intent(addTimerPage.this, secondAlarm.class);
+intent1.putExtra("CMD", CMD);
+startActivity(intent1);
 
-                } else if (i == 2) {
-                    CMD = "Down";
-                    Intent intent2 = new Intent(addTimerPage.this, MyAlarm.class);
-                    intent2.putExtra("CMD", CMD);
-                    startActivity(intent2);
-                }else if (i == 3) {
-                    CMD = "L";
-                    Intent intent3 = new Intent(addTimerPage.this, MyAlarm.class);
-                    intent3.putExtra("CMD", CMD);
-                    startActivity(intent3);
-                }
-            }
+} else if (i == 2) {
+CMD = "Down";
+Intent intent2 = new Intent(addTimerPage.this, secondAlarm.class);
+intent2.putExtra("CMD", CMD);
+startActivity(intent2);
+}else if (i == 3) {
+CMD = "L";
+Intent intent3 = new Intent(addTimerPage.this, secondAlarm.class);
+intent3.putExtra("CMD", CMD);
+startActivity(intent3);
+}
+}
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+@Override
+public void onNothingSelected(AdapterView<?> adapterView) {
 
-            }
-        });
-**/
+}
+});
+ **/
 
 
 
 
 
         //attaching clicklistener on button
-        findViewById(R.id.buttonAlarm).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.buttonAlarm1).setOnClickListener(new View.OnClickListener() {
 
             /**       if (mySpinner.getSelectedItem().toString().equals("Small")) {
              CMD = "Up";
@@ -137,7 +137,7 @@ public class addTimerPage extends AppCompatActivity {
             }
         });
 
-        final Button cancelAlarm = findViewById(R.id.buttonCancel);
+        final Button cancelAlarm = findViewById(R.id.buttonCancel1);
         cancelAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -153,32 +153,32 @@ public class addTimerPage extends AppCompatActivity {
         AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
         //creating a new intent specifying the broadcast receiver
-        Intent i = new Intent(this, MyAlarm.class);
+        Intent i = new Intent(this, secondAlarm.class);
         if (mySpinner.getSelectedItem().toString().equals("Small")) {
             CMD = "Up";
             // Intent intent1 = new Intent("my.action.string");
             i.putExtra("CMD", CMD);
-             //sendBroadcast(i);
+            //sendBroadcast(i);
 
         }
 
         else if (mySpinner.getSelectedItem().toString().equals("Medium")) {
             CMD = "Down";
             //   Intent intent2 = new Intent("my.action.string");
-            //  Intent intent2 = new Intent(addTimerPage.this, MyAlarm.class);
+            //  Intent intent2 = new Intent(addTimerPage.this, secondAlarm.class);
 
             i.putExtra("CMD", CMD);
-             //sendBroadcast(i);
+            //sendBroadcast(i);
 
         }
 
         else if (mySpinner.getSelectedItem().toString().equals("Large")) {
             CMD = "L";
             // Intent intent3 = new Intent("my.action.string");
-            // Intent intent3 = new Intent(addTimerPage.this, MyAlarm.class);
+            // Intent intent3 = new Intent(addTimerPage.this, secondAlarm.class);
 
             i.putExtra("CMD", CMD);
-           // sendBroadcast(i);
+            // sendBroadcast(i);
 
         }
         //creating a pending intent using the intent
@@ -189,7 +189,7 @@ public class addTimerPage extends AppCompatActivity {
 
 
         //setting the repeating alarm that will be fired every day
-        am.setRepeating(AlarmManager.RTC_WAKEUP, time, AlarmManager.INTERVAL_DAY, pi);
+        am.setRepeating(AlarmManager.RTC, time, AlarmManager.INTERVAL_DAY, pi);
         Toast.makeText(this, "Timer is set" + CMD, Toast.LENGTH_SHORT).show();
 
 
@@ -204,12 +204,12 @@ public class addTimerPage extends AppCompatActivity {
         AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
         //creating a new intent specifying the broadcast receiver
-        Intent i = new Intent(this, MyAlarm.class);
+        Intent i = new Intent(this, secondAlarm.class);
 
         //creating a pending intent using the intent
         PendingIntent pi = PendingIntent.getBroadcast(this, 0, i, 0);
 
-       am.cancel(pi);
+        am.cancel(pi);
         Toast.makeText(this, "Timer is cancel", Toast.LENGTH_SHORT).show();
 
     }

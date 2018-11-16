@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.widget.ImageView;
 
 public class homePage extends AppCompatActivity {
 
@@ -17,19 +17,27 @@ public class homePage extends AppCompatActivity {
 
 
 
-        Button feedPetBtn = (Button)findViewById(R.id.feedPet);
-        feedPetBtn.setOnClickListener(new OnClickListener() {
+        ImageView feedPet = findViewById(R.id.imageView6);
+        feedPet.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent feedPetIntent = new Intent(getApplicationContext(), feedPetPage.class);
+                Intent feedPetIntent = new Intent(getApplicationContext(), feedPetIns.class);
+                startActivity(feedPetIntent);
+            }
+        });
+
+        ImageView timer = findViewById(R.id.imageView11);
+        timer.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent feedPetIntent = new Intent(getApplicationContext(), addTimerPage.class);
                 startActivity(feedPetIntent);
             }
         });
 
 
-
-        Button logout = (Button)findViewById(R.id.logoutBtn);
-        logout.setOnClickListener(new OnClickListener() {
+        ImageView exit = findViewById(R.id.imageView5);
+        exit.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent logout = new Intent(getApplicationContext(), login.class);
@@ -39,8 +47,9 @@ public class homePage extends AppCompatActivity {
         });
 
 
-        Button notification = findViewById(R.id.viewNotBtn);
-        notification.setOnClickListener(new OnClickListener() {
+
+        ImageView status = findViewById(R.id.imageView8);
+        status.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent viewNot = new Intent(getApplicationContext(), notificationPage.class);
@@ -48,7 +57,7 @@ public class homePage extends AppCompatActivity {
             }
         });
 
-        Button feedPetRec = findViewById(R.id.viewRecBtn);
+        ImageView feedPetRec = findViewById(R.id.imageView7);
         feedPetRec.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

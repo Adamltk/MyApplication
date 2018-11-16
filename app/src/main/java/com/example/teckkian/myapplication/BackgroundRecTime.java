@@ -30,7 +30,7 @@ public class BackgroundRecTime extends AsyncTask<String,Void,String> {
     protected String doInBackground(String... params) {
         String type = params[0];
 
-        String feedInst_url = "http://192.168.0.107/feedInst.php";
+        String feedInst_url = "http://192.168.1.41/feedInst.php";
         if (type.equals("feedInst")) {
             try {
                 String date = params[1];

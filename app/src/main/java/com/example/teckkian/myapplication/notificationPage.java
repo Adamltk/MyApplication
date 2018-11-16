@@ -15,10 +15,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import static com.example.teckkian.myapplication.notification.CHANNEL_1_ID;
+import static com.example.teckkian.myapplication.notification.CHANNEL_2_ID;
 
 public class notificationPage extends AppCompatActivity {
     private NotificationManagerCompat notificationManager;
-    ProgressBar pg123;
+    ProgressBar pg123, pg456;
     DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
 
@@ -28,6 +29,7 @@ public class notificationPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification_page);
         pg123 = findViewById(R.id.pg);
+        pg456 = findViewById(R.id.progressBar2);
         notificationManager = NotificationManagerCompat.from(this);
 
 
@@ -39,6 +41,9 @@ public class notificationPage extends AppCompatActivity {
                 for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
                    //String value = noteDataSnapshot.getValue(String.class);
                     Integer value = noteDataSnapshot.getValue(Integer.class);
+
+
+
                    if(value < 10 ){
 
                        sendOnChannel1();
@@ -70,6 +75,34 @@ public class notificationPage extends AppCompatActivity {
             }
         });
 
+        database.child("WaterL").child("Water").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
+                    //String value = noteDataSnapshot.getValue(String.class);
+                    Integer value = noteDataSnapshot.getValue(Integer.class);
+
+
+
+
+                    if (value <= 100) {
+
+                        sendOnChannel2();
+                        pg456.setProgress(0);
+                    } else {
+                        int r = value - 440;
+                        pg456.setProgress(r);
+                    }
+
+
+                }
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
 
 
     }
@@ -82,7 +115,7 @@ public class notificationPage extends AppCompatActivity {
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_1_ID)
                 .setSmallIcon(R.drawable.ic_one)
                 .setContentTitle("The food is running out!!!")
-                .setContentText("Add food please")
+                .setContentText("Please add food.")
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                 .build();
@@ -90,7 +123,7 @@ public class notificationPage extends AppCompatActivity {
         notificationManager.notify(1, notification);
     }
 
-
+/**
     public void sendOnChannel2() {
 
 
@@ -103,19 +136,17 @@ public class notificationPage extends AppCompatActivity {
                 .build();
 
         notificationManager.notify(1, notification);
-    }
-/**
-    public void sendOnChannel2(View v) {
-        String title = editTextTitle.getText().toString();
-        String message = editTextMessage.getText().toString();
+    }**/
+
+    public void sendOnChannel2() {
 
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_2_ID)
                 .setSmallIcon(R.drawable.ic_two)
-                .setContentTitle(title)
-                .setContentText(message)
+                .setContentTitle("Low water level")
+                .setContentText("Please add water.")
                 .setPriority(NotificationCompat.PRIORITY_LOW)
                 .build();
 
         notificationManager.notify(2, notification);
-    }**/
+    }
 }

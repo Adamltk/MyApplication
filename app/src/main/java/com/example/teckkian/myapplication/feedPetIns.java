@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -29,10 +29,8 @@ public class feedPetIns extends AppCompatActivity {
     public static int wifiModulePort = 0;
     public static String CMD = "0";
     //UI Element
-    Button btnUp;
-    Button btnDown;
-    Button btnLarge;
 
+    ImageView small, medium, large;
     Socket myAppSocket = null;
 
     @Override
@@ -47,12 +45,12 @@ public class feedPetIns extends AppCompatActivity {
 
 
 
-        btnUp = (Button) findViewById(R.id.btnUp);
-        btnDown = (Button) findViewById(R.id.btnDown);
-        btnLarge = (Button) findViewById(R.id.large);
+        small =  findViewById(R.id.imageView12);
+        medium =  findViewById(R.id.imageView13);
+        large =  findViewById(R.id.imageView14);
 
 
-        btnUp.setOnClickListener(new View.OnClickListener() {
+        small.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 feedInst();
@@ -63,7 +61,7 @@ public class feedPetIns extends AppCompatActivity {
 
             }
         });
-        btnDown.setOnClickListener(new View.OnClickListener() {
+        medium.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 feedInst();
@@ -75,7 +73,7 @@ public class feedPetIns extends AppCompatActivity {
             }
         });
 
-        btnLarge.setOnClickListener(new View.OnClickListener() {
+        large.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 feedInst();
@@ -118,6 +116,8 @@ public class feedPetIns extends AppCompatActivity {
                 dataOutputStream.writeBytes(CMD);
                 dataOutputStream.close();
                 socket.close();
+                Log.d("TESTING", "123");
+
             } catch (UnknownHostException e) {
                 e.printStackTrace();
             } catch (IOException e) {
