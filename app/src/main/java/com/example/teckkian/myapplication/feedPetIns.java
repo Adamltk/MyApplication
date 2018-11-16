@@ -116,7 +116,6 @@ public class feedPetIns extends AppCompatActivity {
                 dataOutputStream.writeBytes(CMD);
                 dataOutputStream.close();
                 socket.close();
-                Log.d("TESTING", "123");
 
             } catch (UnknownHostException e) {
                 e.printStackTrace();

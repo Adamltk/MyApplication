@@ -52,7 +52,7 @@ public class homePage extends AppCompatActivity {
         status.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent viewNot = new Intent(getApplicationContext(), notificationPage.class);
+                Intent viewNot = new Intent(getApplicationContext(), statusPage.class);
                 startActivity(viewNot);
             }
         });
