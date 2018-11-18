@@ -4,27 +4,37 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class addTimerPage extends AppCompatActivity {
 
-    //the timepicker object
+
     TimePicker timePicker;
-    Calendar calendar;
-    SimpleDateFormat dateFormat;
-    SimpleDateFormat timeFormat;
     Spinner mySpinner;
-    String CMD,CMD2,CMD3;
+    String CMD;
+    ToggleButton toggleButton;
+
+
+
+    public final static String Shared_Prefs = "sharedPrefs";
+    public final static String HOUR = "0";
+    public final static String MIN = "0";
+    public final static String toggle = "toggle";
+
+    private int hour;
+    private int min;
+    private boolean toggleOnOff;
 
 
 
@@ -34,119 +44,128 @@ public class addTimerPage extends AppCompatActivity {
         setContentView(R.layout.activity_add_timer_page);
 
         //getting the timepicker object
-        timePicker =  findViewById(R.id.timePicker);
-        mySpinner =  findViewById(R.id.spinner);
+        timePicker = findViewById(R.id.timePicker);
+        mySpinner = findViewById(R.id.spinner);
+        toggleButton =  findViewById(R.id.alarmToggle);
 
 
-       // ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(addTimerPage.this,
-         //       android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.amount));
+
 
         ArrayAdapter<CharSequence> myAdapter = ArrayAdapter.createFromResource(this, R.array.amount, android.R.layout.simple_spinner_item);
 
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mySpinner.setAdapter(myAdapter);
 
-        calendar = Calendar.getInstance();
-        dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        timeFormat = new SimpleDateFormat("HH:mm:ss");
 
-
-/**
-        mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if (i == 1) {
-                    CMD = "Up";
-                    Intent intent1 = new Intent(addTimerPage.this, MyAlarm.class);
-                    intent1.putExtra("CMD", CMD);
-                    startActivity(intent1);
-
-                } else if (i == 2) {
-                    CMD = "Down";
-                    Intent intent2 = new Intent(addTimerPage.this, MyAlarm.class);
-                    intent2.putExtra("CMD", CMD);
-                    startActivity(intent2);
-                }else if (i == 3) {
-                    CMD = "L";
-                    Intent intent3 = new Intent(addTimerPage.this, MyAlarm.class);
-                    intent3.putExtra("CMD", CMD);
-                    startActivity(intent3);
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-**/
-
-
-
-
-
-        //attaching clicklistener on button
-        findViewById(R.id.buttonAlarm).setOnClickListener(new View.OnClickListener() {
-
-            /**       if (mySpinner.getSelectedItem().toString().equals("Small")) {
-             CMD = "Up";
-             Intent intent1 = new Intent("my.action.string");
-             intent1.putExtra("CMD", CMD);
-             sendBroadcast(intent1);
-
-             }
-
-             else if (mySpinner.getSelectedItem().toString().equals("Medium")) {
-             CMD = "Down";
-             Intent intent2 = new Intent("my.action.string");
-             intent2.putExtra("CMD", CMD);
-             sendBroadcast(intent2);
-
-             }
-
-             else if (mySpinner.getSelectedItem().toString().equals("Large")) {
-             CMD = "L";
-             Intent intent3 = new Intent("my.action.string");
-             intent3.putExtra("CMD", CMD);
-             sendBroadcast(intent3);
-
-             }
-             **/
-            @Override
-            public void onClick(View view) {
-                //We need a calendar object to get the specified time in millis
-                //as the alarm manager method takes time in millis to setup the alarm
-
-                Calendar calendar = Calendar.getInstance();
-                if (android.os.Build.VERSION.SDK_INT >= 23) {
-                    calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH),
-                            timePicker.getHour(), timePicker.getMinute(), 0);
-                } else {
-                    calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH),
-                            timePicker.getCurrentHour(), timePicker.getCurrentMinute(), 0);
-                }
-
-
-
-                setAlarm(calendar.getTimeInMillis());
-
-
-
-
-
-            }
-        });
-
-        final Button cancelAlarm = findViewById(R.id.buttonCancel);
-        cancelAlarm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cancelAlarm();
-            }
-        });
+        loadData();
+        update();
 
 
     }
+
+
+
+/**
+
+    private void Alm(final DatabaseReference refAlm, final ToggleButton toggleButton ){
+        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                refAlm.setValue(isChecked);
+            }
+        });
+        refAlm.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Boolean status_Alarm=(Boolean)dataSnapshot.getValue();
+                toggleButton.setChecked(status_Alarm);
+                if(status_Alarm) {
+                    Log.d("MyActivity", "Alarm On");
+                    Calendar calendar = Calendar.getInstance();
+                    if (android.os.Build.VERSION.SDK_INT >= 23) {
+                        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH),
+                                timePicker.getHour(), timePicker.getMinute(), 0);
+                    } else {
+                        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH),
+                                timePicker.getCurrentHour(), timePicker.getCurrentMinute(), 0);
+                    }
+                    setAlarm(calendar.getTimeInMillis());
+                    toggleButton.setTextOn("Switch Off");
+
+                    saveData();
+
+                }else {
+                    toggleButton.setTextOff("Switch On");
+                    cancelAlarm();
+
+                    saveData();
+                }
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });**/
+
+
+    public void onToggleClicked(View view) {
+        if (((ToggleButton) view).isChecked()) {
+            saveData();
+            Log.d("MyActivity", "Alarm On");
+            Calendar calendar = Calendar.getInstance();
+            if (android.os.Build.VERSION.SDK_INT >= 23) {
+                calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH),
+                        hour, min, 0);
+            } else {
+                calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH),
+                        timePicker.getCurrentHour(), timePicker.getCurrentMinute(), 0);
+            }
+            setAlarm(calendar.getTimeInMillis());
+
+
+
+        } else {
+            saveData();
+            cancelAlarm();
+
+        }
+    }
+
+    public  void saveData(){
+
+        SharedPreferences sharedPreferences = getSharedPreferences("sharedPrefs", MODE_PRIVATE );
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putInt("Hour", timePicker.getHour());
+        editor.putInt("Min", timePicker.getMinute());
+        editor.putBoolean(toggle, toggleButton.isChecked());
+
+        hour = timePicker.getHour();
+        min = timePicker.getMinute();
+
+        editor.apply();
+    }
+
+
+    public void loadData(){
+        SharedPreferences sharedPreferences = getSharedPreferences("sharedPrefs", MODE_PRIVATE );
+        hour = sharedPreferences.getInt("Hour", 0);
+        min = sharedPreferences.getInt("Min", 0);
+        toggleOnOff = sharedPreferences.getBoolean(toggle, false);
+
+
+    }
+
+    public void update(){
+
+        timePicker.setHour(hour);
+        timePicker.setMinute(min);
+        toggleButton.setChecked(toggleOnOff);
+    }
+
+
 
     private void setAlarm(long time) {
         //getting the alarm manager
@@ -154,48 +173,33 @@ public class addTimerPage extends AppCompatActivity {
 
         //creating a new intent specifying the broadcast receiver
         Intent i = new Intent(this, MyAlarm.class);
+
+
         if (mySpinner.getSelectedItem().toString().equals("Small")) {
             CMD = "Up";
-            // Intent intent1 = new Intent("my.action.string");
-            i.putExtra("CMD", CMD);
-             //sendBroadcast(i);
+            i.putExtra("CMD",CMD);
 
         }
 
         else if (mySpinner.getSelectedItem().toString().equals("Medium")) {
             CMD = "Down";
-            //   Intent intent2 = new Intent("my.action.string");
-            //  Intent intent2 = new Intent(addTimerPage.this, MyAlarm.class);
-
             i.putExtra("CMD", CMD);
-             //sendBroadcast(i);
 
         }
 
         else if (mySpinner.getSelectedItem().toString().equals("Large")) {
             CMD = "L";
-            // Intent intent3 = new Intent("my.action.string");
-            // Intent intent3 = new Intent(addTimerPage.this, MyAlarm.class);
-
             i.putExtra("CMD", CMD);
-           // sendBroadcast(i);
 
         }
+
         //creating a pending intent using the intent
-        PendingIntent pi = PendingIntent.getBroadcast(this, 0, i, 0);
-
-
-        //creatin
+        PendingIntent pi = PendingIntent.getBroadcast(this, 0, i, PendingIntent.FLAG_UPDATE_CURRENT);
 
 
         //setting the repeating alarm that will be fired every day
         am.setRepeating(AlarmManager.RTC_WAKEUP, time, AlarmManager.INTERVAL_DAY, pi);
-        Toast.makeText(this, "Timer is set" + CMD, Toast.LENGTH_SHORT).show();
-
-
-
-
-
+        Toast.makeText(this, "Timer is set: " + hour + " : " + min, Toast.LENGTH_SHORT).show();
 
     }
 
@@ -206,8 +210,10 @@ public class addTimerPage extends AppCompatActivity {
         //creating a new intent specifying the broadcast receiver
         Intent i = new Intent(this, MyAlarm.class);
 
+
+
         //creating a pending intent using the intent
-        PendingIntent pi = PendingIntent.getBroadcast(this, 0, i, 0);
+        PendingIntent pi = PendingIntent.getBroadcast(this, 0, i, PendingIntent.FLAG_UPDATE_CURRENT);
 
        am.cancel(pi);
         Toast.makeText(this, "Timer is cancel", Toast.LENGTH_SHORT).show();

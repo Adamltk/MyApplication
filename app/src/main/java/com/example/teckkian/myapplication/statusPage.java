@@ -37,30 +37,8 @@ public class statusPage extends AppCompatActivity {
                     Integer value = noteDataSnapshot.getValue(Integer.class);
 
 
+                    pg123.setProgress(value);
 
-                   if(value < 10 ){
-
-
-                       pg123.setProgress(0);
-                   }
-                    else if(value < 20){
-
-                        pg123.setProgress(20);
-
-                    }
-                    else if(value <40){
-
-                        pg123.setProgress(40);
-                    } else if(value <60){
-
-                        pg123.setProgress(60);
-                    } else if(value <80){
-
-                        pg123.setProgress(80);
-                    } else if(value >100){
-
-                        pg123.setProgress(100);
-                    }
                 }
 
             }

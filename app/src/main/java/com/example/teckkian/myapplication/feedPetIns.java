@@ -38,6 +38,7 @@ public class feedPetIns extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed_pet_ins);
 
+
         calendar = Calendar.getInstance();
         dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         timeFormat = new SimpleDateFormat("HH:mm:ss");
@@ -47,7 +48,7 @@ public class feedPetIns extends AppCompatActivity {
 
         small =  findViewById(R.id.imageView12);
         medium =  findViewById(R.id.imageView13);
-        large =  findViewById(R.id.imageView14);
+        large =  findViewById(R.id.imageView29);
 
 
         small.setOnClickListener(new View.OnClickListener() {

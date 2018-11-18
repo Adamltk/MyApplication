@@ -34,24 +34,8 @@ public class MyAlarm extends BroadcastReceiver {
 
 
 
-
-
-
-        //you can check the log that it is fired
-        //Here we are actually not doing anything
-        //but you can do any task here that you want to be done at a specific time everyday
-        Log.d("MyAlarmBelal", "Alarm just fired");
-
-      /**  if(action.equals("my.action.string.RUN")) {
-            CMD = intent.getExtras().getString("CMD");
-
-        }**/
-
-
-        CMD = i.getStringExtra("CMD");
-
-        Log.d("TESTING", CMD);
-
+        CMD = i.getExtras().getString("CMD");
+        Log.d("CMDTEST", CMD);
         getIPandPort();
         Socket_AsyncTask cmd_increase_servos = new Socket_AsyncTask();
         cmd_increase_servos.execute();
