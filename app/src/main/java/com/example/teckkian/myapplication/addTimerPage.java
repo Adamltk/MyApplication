@@ -34,6 +34,7 @@ public class addTimerPage extends AppCompatActivity {
 
     private int hour;
     private int min;
+    private int spin;
     private boolean toggleOnOff;
 
 
@@ -141,6 +142,8 @@ public class addTimerPage extends AppCompatActivity {
         editor.putInt("Hour", timePicker.getHour());
         editor.putInt("Min", timePicker.getMinute());
         editor.putBoolean(toggle, toggleButton.isChecked());
+        int selectedPosition = mySpinner.getSelectedItemPosition();
+        editor.putInt("spinnerSelection", selectedPosition);
 
         hour = timePicker.getHour();
         min = timePicker.getMinute();
@@ -153,6 +156,7 @@ public class addTimerPage extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("sharedPrefs", MODE_PRIVATE );
         hour = sharedPreferences.getInt("Hour", 0);
         min = sharedPreferences.getInt("Min", 0);
+        spin = sharedPreferences.getInt("spinnerSelection",0);
         toggleOnOff = sharedPreferences.getBoolean(toggle, false);
 
 
@@ -162,6 +166,7 @@ public class addTimerPage extends AppCompatActivity {
 
         timePicker.setHour(hour);
         timePicker.setMinute(min);
+        mySpinner.setSelection(spin);
         toggleButton.setChecked(toggleOnOff);
     }
 
