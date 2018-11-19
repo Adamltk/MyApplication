@@ -41,6 +41,10 @@ public class MyAlarm extends BroadcastReceiver {
         cmd_increase_servos.execute();
 
 
+
+
+
+
     }
 
     public void getIPandPort() {
@@ -57,11 +61,14 @@ public class MyAlarm extends BroadcastReceiver {
     public class Socket_AsyncTask extends AsyncTask<Void, Void, Void> {
         Socket socket;
 
+
         @Override
         protected Void doInBackground(Void... params) {
+
+
             try {
-                InetAddress inetAddress = InetAddress.getByName(feedPetIns.wifiModuleIp);
-                socket = new java.net.Socket(inetAddress, feedPetIns.wifiModulePort);
+                InetAddress inetAddress = InetAddress.getByName(MyAlarm.wifiModuleIp);
+                socket = new java.net.Socket(inetAddress, MyAlarm.wifiModulePort);
                 DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
                 dataOutputStream.writeBytes(CMD);
                 dataOutputStream.close();

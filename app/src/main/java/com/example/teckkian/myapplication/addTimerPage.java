@@ -65,52 +65,6 @@ public class addTimerPage extends AppCompatActivity {
     }
 
 
-
-/**
-
-    private void Alm(final DatabaseReference refAlm, final ToggleButton toggleButton ){
-        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                refAlm.setValue(isChecked);
-            }
-        });
-        refAlm.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Boolean status_Alarm=(Boolean)dataSnapshot.getValue();
-                toggleButton.setChecked(status_Alarm);
-                if(status_Alarm) {
-                    Log.d("MyActivity", "Alarm On");
-                    Calendar calendar = Calendar.getInstance();
-                    if (android.os.Build.VERSION.SDK_INT >= 23) {
-                        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH),
-                                timePicker.getHour(), timePicker.getMinute(), 0);
-                    } else {
-                        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH),
-                                timePicker.getCurrentHour(), timePicker.getCurrentMinute(), 0);
-                    }
-                    setAlarm(calendar.getTimeInMillis());
-                    toggleButton.setTextOn("Switch Off");
-
-                    saveData();
-
-                }else {
-                    toggleButton.setTextOff("Switch On");
-                    cancelAlarm();
-
-                    saveData();
-                }
-            }
-
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });**/
-
-
     public void onToggleClicked(View view) {
         if (((ToggleButton) view).isChecked()) {
             saveData();
@@ -158,8 +112,6 @@ public class addTimerPage extends AppCompatActivity {
         min = sharedPreferences.getInt("Min", 0);
         spin = sharedPreferences.getInt("spinnerSelection",0);
         toggleOnOff = sharedPreferences.getBoolean(toggle, false);
-
-
     }
 
     public void update(){
