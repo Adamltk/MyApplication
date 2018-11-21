@@ -16,6 +16,8 @@ public class homePage extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
 
 
+        Intent intent=new Intent(this, MyService.class);
+        this.startService(intent);
 
         ImageView feedPet = findViewById(R.id.imageView6);
         feedPet.setOnClickListener(new OnClickListener() {

@@ -56,8 +56,6 @@ public class statusPage extends AppCompatActivity {
                     Integer value = noteDataSnapshot.getValue(Integer.class);
 
 
-
-
                     if (value <= 100) {
 
 

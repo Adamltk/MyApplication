@@ -21,10 +21,6 @@ import static com.example.teckkian.myapplication.notification.CHANNEL_2_ID;
 public class MyService extends Service {
     public MyService() {
 
-
-
-
-
     }
     NotificationManagerCompat notificationManager;
     DatabaseReference database = FirebaseDatabase.getInstance().getReference();
@@ -40,8 +36,6 @@ public class MyService extends Service {
                 for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
                     //String value = noteDataSnapshot.getValue(String.class);
                     Integer value = noteDataSnapshot.getValue(Integer.class);
-
-
 
                     if(value < 10 ){
 
